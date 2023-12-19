@@ -4,7 +4,8 @@ import {Box, Text, NativeBaseProvider} from 'native-base';
 
 import {THEME} from './src/theme';
 import {Loading} from '@components/Loading';
-import {Routes} from './src/routes';
+// import {Routes} from './src/routes';
+import {Home} from '@screens/Home';
 
 const test = 'testeando';
 
@@ -16,7 +17,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {test ? <Routes /> : <Loading />}
+      {test ? <Home /> : <Loading />}
     </NativeBaseProvider>
   );
 }
