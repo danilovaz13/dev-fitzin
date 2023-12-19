@@ -4,7 +4,7 @@ import {Box, Text, NativeBaseProvider} from 'native-base';
 
 import {THEME} from './src/theme';
 import {Loading} from '@components/Loading';
-import {SignIn} from '@screens/SignIn';
+import {SignUp} from '@screens/SignUp';
 
 const test = 'testeando';
 
@@ -16,7 +16,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {test ? <SignIn /> : <Loading />}
+      {test ? <SignUp /> : <Loading />}
     </NativeBaseProvider>
   );
 }
