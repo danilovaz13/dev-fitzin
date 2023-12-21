@@ -1,5 +1,8 @@
-import {HStack, Heading, Text, VStack} from 'native-base';
+import {HStack, Heading, Text, VStack, Icon} from 'native-base';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+
 import {UserPhoto} from './UserPhoto';
+import {TouchableOpacity} from 'react-native';
 
 export function HomeHeader() {
   return (
@@ -18,6 +21,9 @@ export function HomeHeader() {
           Danilo
         </Heading>
       </VStack>
+      <TouchableOpacity>
+        <Icon as={MaterialIcon} name="logout" color="gray.200" size={7} />
+      </TouchableOpacity>
     </HStack>
   );
 }

@@ -51,6 +51,11 @@
 	<array>
 		<string>Roboto-Bold.ttf</string>
 		<string>Roboto-Regular.ttf</string>
+		<string>fonts/FontAwesome.ttf</string>
+    <string>fonts/Ionicons.ttf</string>
+    <string>fonts/Foundation.ttf</string>
+    <string>fonts/MaterialCommunityIcons.ttf</string>
+    <string>fonts/MaterialIcons.ttf</string>
 	</array>
 	<false/>
 </dict>
