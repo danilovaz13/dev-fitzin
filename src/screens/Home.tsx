@@ -14,6 +14,13 @@ export function Home() {
     'ombro',
   ]);
 
+  const [exercises, setExercises] = React.useState([
+    'Puxada frontal',
+    'Remada curvada',
+    'Remada unilateral',
+    'Levantamento terra',
+  ]);
+
   return (
     <VStack flex={1}>
       <HomeHeader />
@@ -44,9 +51,13 @@ export function Home() {
             4
           </Text>
         </HStack>
-
-        <ExerciseCard />
-        <ExerciseCard />
+        <FlatList
+          data={exercises}
+          keyExtractor={item => item}
+          renderItem={({item}) => <ExerciseCard />}
+          showsVerticalScrollIndicator={false}
+          _contentContainerStyle={{paddingBottom: 20}}
+        />
       </VStack>
     </VStack>
   );
