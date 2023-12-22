@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {AppNavigatorRoutesProps} from '@routes/app.routes';
-import {HStack, Heading, Icon, Text, VStack} from 'native-base';
+import {HStack, Heading, Icon, Text, VStack, Image} from 'native-base';
 import {TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -35,6 +35,20 @@ export function Exercise() {
             </Text>
           </HStack>
         </HStack>
+      </VStack>
+
+      <VStack p={8}>
+        <Image
+          w="full"
+          h={80}
+          source={{
+            uri: 'https://thumb.mais.uol.com.br/16669847-large.jpg?ver=0',
+          }}
+          alt="Nome do exercício"
+          mb={3}
+          resizeMode="cover"
+          rounded="lg"
+        />
       </VStack>
     </VStack>
   );
