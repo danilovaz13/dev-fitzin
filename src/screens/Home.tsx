@@ -1,9 +1,12 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {VStack, Text, HStack, FlatList, Heading} from 'native-base';
 
 import {HomeHeader} from '@components/HomeHeader';
 import {Group} from '@components/Group';
 import {ExerciseCard} from '@components/ExerciseCard';
+
+import {AppNavigatorRoutesProps} from '@routes/app.routes';
 
 export function Home() {
   const [groupSelected, setGroupSelected] = React.useState('Costas');
@@ -20,6 +23,12 @@ export function Home() {
     'Remada unilateral',
     'Levantamento terra',
   ]);
+
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  function handleOpenExerciseDetails() {
+    navigation.navigate('exercise');
+  }
 
   return (
     <VStack flex={1}>
@@ -54,7 +63,9 @@ export function Home() {
         <FlatList
           data={exercises}
           keyExtractor={item => item}
-          renderItem={({item}) => <ExerciseCard />}
+          renderItem={({item}) => (
+            <ExerciseCard onPress={handleOpenExerciseDetails} />
+          )}
           showsVerticalScrollIndicator={false}
           _contentContainerStyle={{paddingBottom: 20}}
         />
