@@ -6,7 +6,7 @@ import {Group} from '@components/Group';
 import {ExerciseCard} from '@components/ExerciseCard';
 
 export function Home() {
-  const [groupSelected, setGroupSelected] = React.useState('ombro');
+  const [groupSelected, setGroupSelected] = React.useState('Costas');
   const [groups, setGroups] = React.useState([
     'Costas',
     'Bíceps',
@@ -30,7 +30,7 @@ export function Home() {
         renderItem={({item}) => (
           <Group
             name={item}
-            isActive={groupSelected === item}
+            isActive={groupSelected.toUpperCase() === item.toUpperCase()}
             onPress={() => setGroupSelected(item)}
           />
         )}
