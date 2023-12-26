@@ -3,13 +3,81 @@ import {ScreenHeader} from '@components/ScreenHeader';
 import {UserPhoto} from '@components/UserPhoto';
 import {Input} from '@components/Input';
 import {Button} from '@components/Button';
-
 import {Center, ScrollView, Skeleton, VStack, Text, Heading} from 'native-base';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Alert} from 'react-native';
+import {
+  launchCamera,
+  launchImageLibrary,
+  ImagePickerResponse,
+  CameraOptions,
+  ImageLibraryOptions,
+} from 'react-native-image-picker';
+
 const PHOTO_SIZE = 33;
 
 export function Profile() {
   const [photoIsLoading, setPhotoIsLoading] = React.useState(false);
+  const [userPhoto, setUserPhoto] = React.useState(
+    'http://github.com/danilovaz13.png',
+  );
+
+  const handleChoosePhoto = () => {
+    Alert.alert(
+      'Selecione',
+      'Informe de onde você quer pegar a foto',
+      [
+        {
+          text: 'Galeria',
+          onPress: () => pickImageFromGallery(),
+          style: 'default',
+        },
+        {
+          text: 'Camera',
+          onPress: () => pickImageFromCamera(),
+          style: 'default',
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => console.log('tratar depois...'),
+      },
+    );
+
+    const pickImageFromGallery = async () => {
+      setPhotoIsLoading(true);
+      const options: ImageLibraryOptions = {
+        mediaType: 'photo',
+      };
+
+      try {
+        const result: ImagePickerResponse = await launchImageLibrary(options);
+
+        if (result.assets && result.assets.length > 0 && !result.didCancel) {
+          setUserPhoto(result.assets[0].uri || '');
+        }
+      } catch (error) {
+        console.error('Erro ao escolher a imagem:', error);
+      } finally {
+        setPhotoIsLoading(false);
+      }
+    };
+
+    const pickImageFromCamera = async () => {
+      const options: CameraOptions = {
+        mediaType: 'photo',
+        saveToPhotos: false,
+        cameraType: 'front',
+        quality: 1,
+      };
+      try {
+        const result = await launchCamera(options);
+        // Lógica para lidar com o resultado da câmera, se necessário
+      } catch (error) {
+        console.error('Erro ao escolher a imagem da câmera:', error);
+      }
+    };
+  };
+
   return (
     <VStack flex={1}>
       <ScreenHeader title="Perfil" />
@@ -25,13 +93,13 @@ export function Profile() {
             />
           ) : (
             <UserPhoto
-              source={{uri: 'http://github.com/danilovaz13.png'}}
+              source={{uri: userPhoto}}
               alt="Foto do usuário"
               size={PHOTO_SIZE}
             />
           )}
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleChoosePhoto}>
             <Text
               color="green.500"
               fontWeight="bold"

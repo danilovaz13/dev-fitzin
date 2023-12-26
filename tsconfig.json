@@ -4,6 +4,7 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
+      "*": ["types/*"],
       "@dtos/*": ["src/dtos/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],

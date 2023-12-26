@@ -57,6 +57,10 @@
     <string>fonts/MaterialCommunityIcons.ttf</string>
     <string>fonts/MaterialIcons.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Permissão para acessar sua biblioteca</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Permissão para acessar sua camera</string>
 	<false/>
 </dict>
 </plist>
