@@ -16,6 +16,7 @@
     "native-base": "^3.4.28",
     "react": "18.2.0",
     "react-native": "0.73.0",
+    "react-native-fs": "^2.20.0",
     "react-native-image-crop-picker": "^0.40.2",
     "react-native-image-crop-tools": "^1.6.4",
     "react-native-image-picker": "^7.1.0",

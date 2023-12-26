@@ -13,6 +13,8 @@ import {
   ImageLibraryOptions,
 } from 'react-native-image-picker';
 
+import RNFS from 'react-native-fs';
+
 const PHOTO_SIZE = 33;
 
 export function Profile() {
@@ -53,6 +55,8 @@ export function Profile() {
         const result: ImagePickerResponse = await launchImageLibrary(options);
 
         if (result.assets && result.assets.length > 0 && !result.didCancel) {
+          const photoInfo = await RNFS.stat(result.assets[0].uri || '');
+          console.log('Tamanho da foto:', photoInfo.size);
           setUserPhoto(result.assets[0].uri || '');
         }
       } catch (error) {
