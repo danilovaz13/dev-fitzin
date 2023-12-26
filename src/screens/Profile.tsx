@@ -3,7 +3,15 @@ import {ScreenHeader} from '@components/ScreenHeader';
 import {UserPhoto} from '@components/UserPhoto';
 import {Input} from '@components/Input';
 import {Button} from '@components/Button';
-import {Center, ScrollView, Skeleton, VStack, Text, Heading} from 'native-base';
+import {
+  Center,
+  ScrollView,
+  Skeleton,
+  VStack,
+  Text,
+  Heading,
+  useToast,
+} from 'native-base';
 import {TouchableOpacity, Alert} from 'react-native';
 import {
   launchCamera,
@@ -22,6 +30,7 @@ export function Profile() {
   const [userPhoto, setUserPhoto] = React.useState(
     'http://github.com/danilovaz13.png',
   );
+  const toast = useToast();
 
   const handleChoosePhoto = () => {
     Alert.alert(
@@ -59,9 +68,11 @@ export function Profile() {
             result.assets[0].uri || '',
           );
           if (photoInfo.size && photoInfo.size / 1024 / 1024 > 5) {
-            return Alert.alert(
-              'Essa imagem é muito grande. Escolha uma de até 5MB.',
-            );
+            return toast.show({
+              title: 'Essa imagem é muito grand. Escolha uma de até 5MB.',
+              placement: 'top',
+              bgColor: 'red.500',
+            });
           } else {
             setUserPhoto(result.assets[0].uri || '');
           }
