@@ -79,6 +79,14 @@ export function SignUp() {
           <Controller
             control={control}
             name="email"
+            rules={{
+              required: 'Informe o e-mail.',
+              pattern: {
+                value:
+                  /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i,
+                message: 'E-mail inválido',
+              },
+            }}
             render={({field: {onChange, value}}) => (
               <Input
                 placeholder="E-mail"
@@ -89,6 +97,8 @@ export function SignUp() {
               />
             )}
           />
+
+          <Text color="white">{errors.email?.message}</Text>
 
           <Controller
             control={control}
