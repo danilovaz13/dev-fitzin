@@ -9,17 +9,29 @@ import LogoSvg from '@assets/logoreal.svg';
 import {Input} from '@components/Input';
 import {Button} from '@components/Button';
 
+type FormDataProps = {
+  name: string;
+  email: string;
+  password: string;
+  password_confirm: string;
+};
+
 export function SignUp() {
   const navigation = useNavigation();
 
-  const {control, handleSubmit} = useForm();
+  const {control, handleSubmit} = useForm<FormDataProps>();
 
   function handleBackLogin() {
     navigation.goBack();
   }
 
-  function handleSignUp(data: any) {
-    console.log(data);
+  function handleSignUp({
+    name,
+    email,
+    password,
+    password_confirm,
+  }: FormDataProps) {
+    console.log({name, email, password, password_confirm});
   }
 
   return (
