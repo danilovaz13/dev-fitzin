@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {Controller, useForm, ResolverOptions} from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -148,7 +148,7 @@ export function SignUp() {
         <Button
           title="Voltar para o login"
           variant="outline"
-          mt={24}
+          mt={12}
           onPress={handleBackLogin}
         />
       </VStack>
