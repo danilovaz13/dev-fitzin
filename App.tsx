@@ -22,10 +22,12 @@ export default function App() {
       />
       <AuthContext.Provider
         value={{
-          id: '1',
-          name: 'Danilo',
-          email: 'danilo@gmail.com',
-          avatar: 'danilo.png',
+          user: {
+            id: '1',
+            name: 'Danilo',
+            email: 'danilo@gmail.com',
+            avatar: 'danilo.png',
+          },
         }}>
         {test ? <Routes /> : <Loading />}
       </AuthContext.Provider>
